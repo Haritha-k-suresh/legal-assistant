@@ -1,7 +1,5 @@
 # Legal Assistant
 
-# 
-
 This model demonstrates a fine-tuned **T5 transformer model** for simplifying legal English into plain English using the Hugging Face `transformers` and `datasets` libraries and then translated to malayalm using MarianMT (by Helsinki-NLP)
 
 ---
@@ -27,14 +25,12 @@ Legal documents are often difficult to understand due to their formal and comple
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 
-2. Install Dependencies
+###2. Install Dependencies
 pip install transformers datasets sentencepiece
 
 Model: T5-small
 Model Type: Encoder-Decoder (Seq2Seq)
-
 Base: t5-small
-
 Task Format: Prefix each input with simplify: to instruct the model.
 
 🧪 Dataset
@@ -42,26 +38,26 @@ A small toy dataset is created inside the notebook using the Hugging Face datase
 
 Example:
 
-Input (Legal Text)                                                                   	Output (Simplified Text)
-simplify: The lessee shall remit payment within thirty (30) days of receipt.        	The renter must pay within 30 days.
+Input (Legal Text) 
+simplify: The lessee shall remit payment within thirty (30) days of receipt.        	
 
-Training Details
+Output (Simplified Text)
+The renter must pay within 30 days.
+
+###Training Details
+
 Tokenizer: T5Tokenizer
-
 Model: T5ForConditionalGeneration
-
 Epochs: 50
-
 Batch Size: 2
-
 Evaluation Strategy: Epoch-based
 
-Output
+###Output
 Trained model is saved to ./legal_t5_model/
 
 A ZIP archive legal_t5_model.zip is created and can be downloaded directly.
 
-How to Use the Model
+###How to Use the Model
 You can reload the saved model using:
 
 from transformers import T5Tokenizer, T5ForConditionalGeneration
@@ -76,15 +72,15 @@ def simplify(text):
 
 simplify("The lessee shall remit payment within thirty (30) days of receipt.")
 
-Notes
+###Notes
 This is a proof-of-concept using synthetic toy data.
 
 For production use, consider training on larger datasets like contracts or public case law documents.
 
 The model works best when you prefix input with simplify: as shown above.
 
-📜 License
+### License
 This project is licensed under the MIT License — feel free to use, modify, and distribute.
 
-🤝 Contributions
+### Contributions
 Pull requests and suggestions are welcome!
