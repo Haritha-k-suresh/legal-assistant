@@ -56,9 +56,13 @@ The renter must pay within 30 days.
 ### Training Details
 
 Tokenizer: T5Tokenizer
+
 Model: T5ForConditionalGeneration
+
 Epochs: 50
+
 Batch Size: 2
+
 Evaluation Strategy: Epoch-based
 
 ---
@@ -71,20 +75,28 @@ A ZIP archive legal_t5_model.zip is created and can be downloaded directly.
 ---
 
 ### How to Use the Model
-You can reload the saved model using:
+## 🧪 Example Usage
 
+```python
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
+# Load the trained model and tokenizer
 model = T5ForConditionalGeneration.from_pretrained("legal_t5_model")
 tokenizer = T5Tokenizer.from_pretrained("legal_t5_model")
 
+# Define a simplification function
 def simplify(text):
     inputs = tokenizer("simplify: " + text, return_tensors="pt", truncation=True, padding=True)
     outputs = model.generate(**inputs)
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-simplify("The lessee shall remit payment within thirty (30) days of receipt.")
+# Example
+simplified = simplify("The lessee shall remit payment within thirty (30) days of receipt.")
+print("Simplified Text:", simplified)
 
+
+simplify("The lessee shall remit payment within thirty (30) days of receipt.")
+```
 ---
 
 ### Notes
